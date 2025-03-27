@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import "dotenv/config";
-import morgan from "morgan";
 import methodOverride from "method-override";
 import router from "./controllers/auth.js";
 
@@ -12,8 +11,6 @@ mongoose.connect(process.env.MONGODB_URI);
 app.use(express.urlencoded({ extended: false }));
 // Middleware for using HTTP verbs such as PUT or DELETE
 app.use(methodOverride("_method"));
-// Morgan for logging HTTP requests
-app.use(morgan('dev'));
 
 app.get("/", (req, res) => {
     res.render("index.ejs");
